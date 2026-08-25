@@ -1,11 +1,10 @@
 # Task 1 - Gitea Local Setup & Understanding
 
-##Gitea
+## Gitea
 
 Gitea is a self-hosted, all-in-one software development platform that provides Git hosting, code review, issue tracking, project management, collaboration, package registry, and CI/CD support.
 
 Written in Go, Gitea is lightweight and runs across major platforms such as Linux, macOS, FreeBSD, OpenBSD, and Windows, supporting multiple architectures.
-
 
 ## Task Objective
 
@@ -40,7 +39,6 @@ Reviewed the main project documentation:
 - `docs/build-setup.md`
 - `docs/development.md`
 
-
 ## Environment Setup
 
 The required development tools were installed and verified:
@@ -50,8 +48,9 @@ Git       2.55.0
 Go        1.27.0
 Node.js   24.15.0
 npm       11.12.1
-pnpm      11.22.0
+pnpm      11.22.1
 Make      4.4.1
+```
 
 The required Go version and pnpm version were checked from the project configuration.
 
@@ -59,30 +58,33 @@ The required Go version and pnpm version were checked from the project configura
 
 Gitea was built from source using:
 
+```bash
 make build
+```
 
 After the build completed successfully, Gitea was started without Docker using:
 
+```bash
 ./gitea web
+```
 
 The application started successfully on:
 
+```text
 http://localhost:3000
+```
 
 The Initial Configuration page was verified in the browser.
 
-
-
 ## Issues Faced
 
-* Some tools were available in Git Bash but not initially in the MSYS2 UCRT64 environment.
-* PATH configuration was adjusted to access Go, Node.js, npm, pnpm, and Make.
-* `pnpm` was not initially available and was installed with the project-required version.
-* Git LFS was initially unavailable and required separate setup.
-* The `shared_info::initialize` MSYS2 warnings appeared repeatedly but did not affect the setup.
-* The Gitea repository path in MSYS2 differed from the normal Windows path, which caused some initial confusion while locating files.
-* The Gitea application was successfully built and started after resolving the environment issues.
-
+- Some tools were available in Git Bash but not initially in the MSYS2 UCRT64 environment.
+- PATH configuration was adjusted to access Go, Node.js, npm, pnpm, and Make.
+- `pnpm` was not initially available and was installed with the project-required version.
+- Git LFS was initially unavailable and required separate setup.
+- The `shared_info::initialize` MSYS2 warnings appeared repeatedly but did not affect the setup.
+- The Gitea repository path in MSYS2 differed from the normal Windows path, which caused some initial confusion while locating files.
+- The Gitea application was successfully built and started after resolving the environment issues.
 
 ## Documentation
 
@@ -92,7 +94,7 @@ Detailed document:
 
 ```text
 Task1 doc/Task Document 1.pdf
-
+```
 
 ## GitHub and Pull Request
 
@@ -102,6 +104,7 @@ The task branch was prepared for a Pull Request into the `main` branch of my own
 
 ```text
 gitea-task-1 → main
+```
 
 ## What I Learned
 
