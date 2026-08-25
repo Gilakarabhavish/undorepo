@@ -1,83 +1,112 @@
-````markdown
-# Task 1: Gitea Local Setup & Understanding
+# Task 1 - Gitea Local Setup & Understanding
 
-## Interview Explanation
+##Gitea
 
-The main goal of Task 1 was to understand the Gitea project structure, set up the required development environment, build Gitea from source, and run it locally without using Docker.
+Gitea is a self-hosted, all-in-one software development platform that provides Git hosting, code review, issue tracking, project management, collaboration, package registry, and CI/CD support.
 
-First, the official Gitea repository was forked to my GitHub account and cloned locally. The fork was configured as the `origin` remote and the official Gitea repository was added as `upstream`. A separate `gitea-task-1` branch was created for the work.
+Written in Go, Gitea is lightweight and runs across major platforms such as Linux, macOS, FreeBSD, OpenBSD, and Windows, supporting multiple architectures.
 
-After cloning the project, the development documentation was reviewed to identify the required tools and versions. The environment was configured using MSYS2 UCRT64. The required tools were verified as:
 
-- Go 1.27.0
-- Node.js 24.15.0
-- npm 11.12.1
-- pnpm 11.22.0
-- GNU Make 4.4.1
+## Task Objective
 
-Some tools were initially available in Git Bash but not in the MSYS2 UCRT64 terminal, so the PATH configuration was adjusted and the tools were verified again.
+The main objective was to set up Gitea locally, understand the project structure and documentation, run it without Docker, and verify that it was working correctly.
 
-The project dependencies were then installed and Gitea was built from source using:
+## Repository Setup
 
-```bash
+- Forked the official Gitea repository to my GitHub account.
+- Cloned the repository to my local system.
+- Added `origin` for my GitHub fork and `upstream` for the official Gitea repository.
+- Created the `gitea-task-1` branch for the task work.
+
+Some important parts of the repository that were reviewed:
+
+- `cmd/` - application commands
+- `models/` - database models
+- `routers/` - application routes
+- `services/` - service logic
+- `web_src/` - frontend source
+- `templates/` - UI templates
+- `tests/` - test files
+- `main.go` - application entry point
+- `go.mod` - Go module configuration
+- `Makefile` - build commands
+
+## Project Understanding
+
+Reviewed the main project documentation:
+
+- `README.md`
+- `CONTRIBUTING.md`
+- `docs/build-setup.md`
+- `docs/development.md`
+
+
+## Environment Setup
+
+The required development tools were installed and verified:
+
+```text
+Git       2.55.0
+Go        1.27.0
+Node.js   24.15.0
+npm       11.12.1
+pnpm      11.22.0
+Make      4.4.1
+
+The required Go version and pnpm version were checked from the project configuration.
+
+## Build and Run
+
+Gitea was built from source using:
+
 make build
-````
 
-After the build completed successfully, Gitea was started locally using:
+After the build completed successfully, Gitea was started without Docker using:
 
-```bash
 ./gitea web
-```
 
 The application started successfully on:
 
-```text
 http://localhost:3000
-```
 
-The browser was then used to verify that the Gitea Initial Configuration page was loading correctly.
+The Initial Configuration page was verified in the browser.
 
-## Gitea Initial Configuration
 
-The first screenshot shows the Initial Configuration page with the database and general configuration sections. This confirmed that the locally built Gitea application was running correctly and ready for initial configuration.
 
-![Gitea Initial Configuration](./screenshots/task-1/01-initial-configuration.png)
+## Issues Faced
 
-The next screenshot shows the general server settings, including the local Gitea Base URL, log path, and optional settings.
+* Some tools were available in Git Bash but not initially in the MSYS2 UCRT64 environment.
+* PATH configuration was adjusted to access Go, Node.js, npm, pnpm, and Make.
+* `pnpm` was not initially available and was installed with the project-required version.
+* Git LFS was initially unavailable and required separate setup.
+* The `shared_info::initialize` MSYS2 warnings appeared repeatedly but did not affect the setup.
+* The Gitea repository path in MSYS2 differed from the normal Windows path, which caused some initial confusion while locating files.
+* The Gitea application was successfully built and started after resolving the environment issues.
 
-![Gitea Server Configuration](./screenshots/task-1/02-server-configuration.png)
 
-The final screenshot shows the repository root path, Git LFS path, running user, server domain, SSH port, and Gitea HTTP port. The application was configured for local development using `localhost` and port `3000`.
+## Documentation
 
-![Gitea Local Paths and Ports](./screenshots/task-1/03-local-paths-and-ports.png)
+The Task 1 setup details, issues, learning, and screenshots were documented separately.
 
-Docker was not used for this setup. The Gitea source repository's existing Docker-related files were left unchanged because they are part of the project source; the application itself was built and run directly from the local source.
-
-## Git and PR Workflow
-
-The work was kept on the `gitea-task-1` branch. After completing the task, the Task 1 documentation was added to the repository, committed, and pushed to my fork.
-
-The pull request will be created from:
+Detailed document:
 
 ```text
-Gilakarabhavish/gitea-project1
-gitea-task-1
-```
+Task1 doc/Task Document 1.pdf
 
-to:
+
+## GitHub and Pull Request
+
+The completed Task 1 work was committed to the `gitea-task-1` branch and pushed to my GitHub fork.
+
+The task branch was prepared for a Pull Request into the `main` branch of my own repository:
 
 ```text
-go-gitea/gitea
-main
-```
+gitea-task-1 → main
 
-## Result
+## What I Learned
 
-Gitea was successfully built from source and verified locally at `http://localhost:3000`. The development environment, project structure, Git workflow, and local Gitea setup were successfully understood and documented.
+This task helped me understand the Gitea project structure, documentation, Git fork and branch workflow, environment setup, building and running Gitea locally without Docker, troubleshooting setup issues, and verifying the application in the browser.
 
 ## Status
 
-Task 1 completed successfully.
-
-```
-```
+Task 1 local setup, verification, documentation, GitHub push, and Pull Request preparation completed successfully.
