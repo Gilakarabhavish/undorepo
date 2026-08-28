@@ -1,85 +1,76 @@
-# Task 2: Automate Local Gitea Project Setup
+# Task 3 - DevOps CRM Project
 
 ## Objective
 
-The objective of this task was to automate the process of building and running the Gitea project locally using a shell script without Docker.
+Set up and run the DevOps CRM project locally and create a Python script to automate the local setup and startup process.
 
-## Environment
+## Project Repository
 
-- Operating System: Windows
-- Terminal: MSYS2 UCRT64
-- Shell: Bash
+https://github.com/PearlThoughts-Intern-DevOps/devops-crm-project
 
-## Implementation
+## Work Completed
 
-Created a shell script named:
+- Cloned the project repository.
+- Explored the project structure and main components.
+- Checked the required Node.js version.
+- Installed project dependencies using Yarn.
+- Installed and configured Docker Desktop with WSL 2.
+- Started the Twenty application locally.
+- Verified the application using Docker and Twenty status checks.
+- Created a Python automation script named `setup_and_start.py`.
+- Automated the dependency installation and application startup process.
+- Added an HTTP health check for `http://localhost:2020`.
+- Tested the automation when the application was already running.
+- Tested the automation after stopping the existing container.
+
+## Automation Process
+
+The Python script performs the following steps:
+
+1. Checks Node.js, Docker, and Yarn.
+2. Verifies that Docker is running correctly.
+3. Installs project dependencies using `yarn.cmd install`.
+4. Starts the Twenty application using `yarn.cmd twenty docker:start`.
+5. Verifies the Twenty server status.
+6. Performs an HTTP health check on `http://localhost:2020`.
+
+## Health Verification
+
+The application was verified using:
+
+- Required tool checks
+- Docker health check
+- Twenty server status
+- HTTP application health check
+
+The final HTTP health check returned:
 
 ```text
-setup.sh
+HTTP 200
 ```
 
-The script performs the following tasks:
-
-- Checks required tools: Git, Go, Node.js, pnpm, Make, and curl.
-- Displays dependency versions.
-- Verifies that it is running from the Gitea project root directory.
-- Builds Gitea using `make build`.
-- Verifies that the Gitea binary was created.
-- Checks whether port `3000` is available.
-- Starts the Gitea web server.
-- Displays the URL:
-
-```text
-http://localhost:3000
-```
-
-## How to Run
-
-Make the script executable:
-
-```bash
-chmod +x setup.sh
-```
-
-Run the script:
-
-```bash
-./setup.sh
-```
+This confirms that the application was not only running inside Docker but was also accessible through the local application URL.
 
 ## Testing
 
-The script was tested successfully. Gitea was built and started automatically, and the application was verified in the browser at:
+The automation was tested after stopping the Twenty server.
 
-```text
-http://localhost:3000
-```
+The script successfully started the existing stopped container and completed the health verification.
 
-## Issues Faced
+No duplicate container was created.
 
-- MSYS2 displayed repeated `shared_info::initialize` warnings, but they did not affect the application.
-- An existing Gitea server needed to be stopped before testing the script again because port `3000` was already in use.
+## Result
 
-## What I Learned
+The DevOps CRM project was successfully set up and automated locally.
 
-This task helped me understand Bash scripting, automation, dependency checks, error handling, building Gitea from source, port checking, and automating the local application startup process.
+The application was successfully accessible at:
 
-## GitHub
+http://localhost:2020
 
-The Task 2 work was completed on the:
+The Python automation script successfully performed setup, startup, verification, and HTTP health checking.
 
-```text
-gitea-task-2
-```
+## Detailed Documentation
 
-branch and will be raised as a Pull Request to:
+Detailed documentation for this task, including the complete setup process, automation explanation, issues faced, solutions, testing, and screenshots, is available in:
 
-```text
-gitea-task-2 → main
-```
-
-in my own GitHub repository.
-
-## Status
-
-Task 2 automation and testing completed successfully.
+`documentation/Task-3-Documentation.docx`
